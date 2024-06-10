@@ -1,4 +1,4 @@
-import ButtonDetailEvent from '../components/ButtonDetailEvent';
+import ButtonDetailEvent from './ButtonDetailEvent';
 import { IoMdCalendar } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 

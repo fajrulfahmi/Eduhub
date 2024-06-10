@@ -1,9 +1,9 @@
-import Badge from '../../components/Badge';
-import Button from '../../components/Button';
-import Navbar from '../../components/Navbar';
-import Footer from '../../components/Footer';
+import Badge from '../../components/User/Badge';
+import Button from '../../components/User/Button';
+import Navbar from '../../components/User/Navbar';
+import Footer from '../../components/User/Footer';
 import { FiArrowUpRight } from 'react-icons/fi';
-import ReviewCard from '../../components/ReviewCard';
+import ReviewCard from '../../components/User/ReviewCard';
 import {
   getAllEvents,
   addEvent,

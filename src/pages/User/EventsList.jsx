@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getDocs, collection } from 'firebase/firestore';
 import { db } from '../../utils/firebase';
-import CardEvent from '../../components/CardEvent';
+import CardEvent from '../../components/User/CardEvent';
 
 const EventsList = () => {
   const [events, setEvents] = useState([]);

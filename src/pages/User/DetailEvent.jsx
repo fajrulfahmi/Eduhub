@@ -3,10 +3,10 @@ import { useParams } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../../utils/firebase';
 
-import Title from '../../components/Title';
-import Content from '../../components/Content';
-import Navbar from '../../components/Navbar';
-import Footer from '../../components/Footer';
+import Title from '../../components/User/Title';
+import Content from '../../components/User/Content';
+import Navbar from '../../components/User/Navbar';
+import Footer from '../../components/User/Footer';
 
 const DetailEvent = () => {
   const { id } = useParams();

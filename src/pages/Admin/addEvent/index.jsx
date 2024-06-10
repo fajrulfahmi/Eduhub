@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import Navbar from '../../components/Navbar';
-import { addEvent } from '../../utils/firestore';
+import { addEvent } from '../../../utils/firestore';
 
-export default function AddEvent() {
+export default function AdminAddEvent() {
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -36,7 +35,6 @@ export default function AddEvent() {
 
   return (
     <div className="lg:mx-[4rem] sm:max-sm mx-[1rem] py-[1rem]">
-      <Navbar />
       <div className="flex justify-center">
         <form
           onSubmit={handleSubmit}
