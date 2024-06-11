@@ -44,6 +44,21 @@ const DetailEvent = () => {
     return <div>{error}</div>;
   }
 
+  const formatDateAndTime = (timestamp) => {
+    const date = new Date(timestamp.seconds * 1000);
+    return date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
+  };
+
+  const formatDate = (timestamp) => {
+    const date = new Date(timestamp.seconds * 1000);
+    return date.toLocaleDateString();
+  };
+
+  const formatTime = (timestamp) => {
+    const date = new Date(timestamp.seconds * 1000);
+    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  };
+
   return (
     <div>
       {event && (
@@ -52,13 +67,15 @@ const DetailEvent = () => {
             <Navbar />
             <Title
               title={event.title}
-              start={event.time_start}
-              end={event.time_end}
+              start={formatDateAndTime(event.reg_start)}
+              end={formatDateAndTime(event.reg_end)}
             />
 
             <Content
-              date={new Date(event.date.seconds * 1000).toLocaleDateString()}
-              time={`${event.time_start} - ${event.time_end}`}
+              date={formatDate(event.time_start)}
+              time={`${formatTime(event.time_start)} - ${formatTime(
+                event.time_end,
+              )}`}
               place={event.location}
               start={event.description}
               overview={event.overview}
@@ -74,31 +91,3 @@ const DetailEvent = () => {
 };
 
 export default DetailEvent;
-
-// import Title from '../../components/Title';
-// import Content from '../../components/Content';
-// import Navbar from '../../components/Navbar';
-// import Footer from '../../components/Footer';
-
-// export default function DetailEvent() {
-//   return (
-//     <div className="lg:mx-[4rem] sm:max-sm mx-[1rem] py-[1rem]">
-//       <Navbar />
-//       <Title
-//         start={event.time_start}
-//         end={event.time_end}
-//       />
-
-//       <Content
-//         date={new Date(event.date.seconds * 1000).toLocaleDateString()}
-//         time={'9:00 AM - 2:00 PM'}
-//         place={event.location}
-//         start={event.description}
-//         overview={event.overview}
-//         netOp={event.opportunities}
-//         keyFeatures={event.key_features}
-//       ></Content>
-//       <Footer />
-//     </div>
-//   );
-// }

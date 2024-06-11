@@ -13,7 +13,7 @@ const CardEvent = ({ event }) => {
               {event.title}
             </h1>
             <h2 className="mt-4 text-xl font-medium">
-              {new Date(event.date.seconds * 1000).toLocaleDateString()}
+              {new Date(event.time_start.seconds * 1000).toLocaleDateString()}
             </h2>
           </div>
           <div className="flex justify-between">

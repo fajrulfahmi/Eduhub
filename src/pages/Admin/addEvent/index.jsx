@@ -11,7 +11,9 @@ export default function AdminAddEvent() {
     talent: '',
     linkMeeting: '',
     location: '',
-    date: '',
+    // date: '',
+    reg_start: '',
+    reg_end: '',
     timeStart: '',
     timeEnd: '',
     eventType: 'webinar',
@@ -171,7 +173,7 @@ export default function AdminAddEvent() {
               required
             />
           </div>
-          <div className="flex flex-col my-3">
+          {/* <div className="flex flex-col my-3">
             <label className="font-bold pb-2" htmlFor="date">
               Date
             </label>
@@ -184,31 +186,59 @@ export default function AdminAddEvent() {
               onChange={handleInputChange}
               required
             />
-          </div>
+          </div> */}
           <div className="flex flex-col my-3">
-            <label className="font-bold pb-2" htmlFor="timeStart">
-              Time Start
+            <label className="font-bold pb-2" htmlFor="reg_start">
+              Registration Start
             </label>
             <input
               className="rounded-md p-3"
-              type="time"
-              id="timeStart"
-              name="timeStart"
-              value={formData.timeStart}
+              type="datetime-local"
+              id="reg_start"
+              name="reg_start"
+              value={formData.reg_start}
               onChange={handleInputChange}
               required
             />
           </div>
           <div className="flex flex-col my-3">
-            <label className="font-bold pb-2" htmlFor="timeEnd">
+            <label className="font-bold pb-2" htmlFor="reg_end">
+              Registration End
+            </label>
+            <input
+              className="rounded-md p-3"
+              type="datetime-local"
+              id="reg_end"
+              name="reg_end"
+              value={formData.reg_end}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <div className="flex flex-col my-3">
+            <label className="font-bold pb-2" htmlFor="time-start">
+              Time Start
+            </label>
+            <input
+              className="rounded-md p-3"
+              type="datetime-local"
+              id="timeStart"
+              name="timeStart"
+              value={formData.time_start}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <div className="flex flex-col my-3">
+            <label className="font-bold pb-2" htmlFor="time-end">
               Time End
             </label>
             <input
               className="rounded-md p-3"
-              type="time"
+              type="datetime-local"
               id="timeEnd"
               name="timeEnd"
-              value={formData.timeEnd}
+              value={formData.time_end}
               onChange={handleInputChange}
               required
             />
