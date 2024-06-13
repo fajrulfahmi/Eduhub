@@ -8,6 +8,7 @@ import SignIn from './pages/signin';
 import HomePage from './pages/User/HomePage';
 import DetailEvent from './pages/User/DetailEvent';
 import EventsList from './pages/User/EventsList';
+import Dashboard from './pages/User/Dashboard';
 
 import AdminDashboard from './pages/Admin/dashboard';
 import AdminEvents from './pages/Admin/events';
@@ -68,6 +69,7 @@ export default function App() {
     <Routes>
       {/* Route yang diakses oleh User */}
       <Route path="/homepage" element={<HomePage />} />
+      <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/signin" element={<SignIn />} />
       <Route path="/event/:id" element={<DetailEvent />} />

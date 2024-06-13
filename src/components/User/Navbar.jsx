@@ -31,8 +31,8 @@ export default function Navbar() {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/about" className="hover:text-gray-300">
-              About
+            <NavLink to="/eventslist" className="hover:text-gray-300">
+              Events
             </NavLink>
           </li>
           <li>
