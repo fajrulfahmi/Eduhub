@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { getDocs, collection } from 'firebase/firestore';
 import { db } from '../../utils/firebase';
 import CardEvent from '../../components/User/CardEvent';
+import Navbar from '../../components/User/Navbar';
 
 const EventsList = () => {
   const [events, setEvents] = useState([]);
@@ -37,7 +38,8 @@ const EventsList = () => {
   }
 
   return (
-    <div>
+    <div className="lg:mx-[4rem] sm:max-sm mx-[1rem] py-[1rem]">
+      <Navbar />
       <h1 className="text-3xl font-bold text-center mb-6">Event List</h1>
       <div className="flex flex-wrap justify-center gap-6">
         {events.map((event) => (
