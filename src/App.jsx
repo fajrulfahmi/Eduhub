@@ -54,66 +54,67 @@ export default function App() {
   console.log(`Login status: ${loginStatus}`);
   console.log(`Admin status: ${isAdmin}`);
   return (
-    <>
-      {isAdmin ? (
-        <Routes>
-          {/* Rute-rute yang diakses oleh pengguna */}
-          <Route path="/homepage" element={<HomePage />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/event/:id" element={<DetailEvent />} />
-          <Route path="/eventslist" element={<EventsList />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-
-          {/* Rute-rute yang hanya dapat diakses oleh admin */}
-          <Route path="/*" element={<AdminDashboard />} />
-          <Route path="/admin-allevent" element={<AdminEvents />} />
-          <Route path="/admin-alluser" element={<AdminUser />} />
-          <Route path="/admin-addevent" element={<AdminAddEvent />} />
-        </Routes>
-      ) : (
-        <Routes>
-          {/* Rute-rute yang diakses oleh pengguna */}
-          <Route path="/*" element={<HomePage />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/event/:id" element={<DetailEvent />} />
-          <Route path="/eventslist" element={<EventsList />} />
-        </Routes>
-      )}
-    </>
-
-    // <Routes>
+    // <>
     //   {isAdmin ? (
-    //     loginStatus ? (
-    //       <>
-    //         <Route path="/*" element={<AdminDashboard />} />
-    //         <Route path="/admin-allevent" element={<AdminEvents />} />
-    //         <Route path="/admin-alluser" element={<AdminUser />} />
-    //         <Route path="/admin-addevent" element={<AdminAddEvent />} />
-    //       </>
-    //     ) : (
-    //       <>
-    //         <Route path="/signup" element={<SignUp />} />
-    //         <Route path="/signin" element={<SignIn />} />
-    //       </>
-    //     )
-    //   ) : loginStatus ? (
-    //     <>
-    //       <Route path="/*" element={<HomePage />} />
-    //       <Route path="/event/:id" element={<DetailEvent />} />
-    //       <Route path="/eventslist" element={<EventsList />} />
-    //     </>
-    //   ) : (
-    //     <>
-    //       <Route path="/*" element={<HomePage />} />
+    //     <Routes>
+    //       {/* Rute-rute yang diakses oleh pengguna */}
+    //       <Route path="/homepage" element={<HomePage />} />
     //       <Route path="/signup" element={<SignUp />} />
     //       <Route path="/signin" element={<SignIn />} />
     //       <Route path="/event/:id" element={<DetailEvent />} />
     //       <Route path="/eventslist" element={<EventsList />} />
-    //     </>
+    //       <Route path="/dashboard" element={<Dashboard />} />
+
+    //       {/* Rute-rute yang hanya dapat diakses oleh admin */}
+    //       <Route path="/*" element={<AdminDashboard />} />
+    //       <Route path="/admin-allevent" element={<AdminEvents />} />
+    //       <Route path="/admin-alluser" element={<AdminUser />} />
+    //       <Route path="/admin-addevent" element={<AdminAddEvent />} />
+    //     </Routes>
+    //   ) : (
+    //     <Routes>
+    //       {/* Rute-rute yang diakses oleh pengguna */}
+    //       <Route path="/*" element={<HomePage />} />
+    //       <Route path="/dashboard" element={<Dashboard />} />
+    //       <Route path="/signup" element={<SignUp />} />
+    //       <Route path="/signin" element={<SignIn />} />
+    //       <Route path="/event/:id" element={<DetailEvent />} />
+    //       <Route path="/eventslist" element={<EventsList />} />
+    //     </Routes>
     //   )}
-    // </Routes>
+    // </>
+
+    <Routes>
+      {isAdmin ? (
+        loginStatus ? (
+          <>
+            <Route path="/*" element={<AdminDashboard />} />
+            <Route path="/admin-allevent" element={<AdminEvents />} />
+            <Route path="/admin-alluser" element={<AdminUser />} />
+            <Route path="/admin-addevent" element={<AdminAddEvent />} />
+          </>
+        ) : (
+          <>
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/signin" element={<SignIn />} />
+          </>
+        )
+      ) : loginStatus ? (
+        <>
+          <Route path="/*" element={<HomePage />} />
+          <Route path="/event/:id" element={<DetailEvent />} />
+          <Route path="/eventslist" element={<EventsList />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </>
+      ) : (
+        <>
+          <Route path="/*" element={<HomePage />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/event/:id" element={<DetailEvent />} />
+          <Route path="/eventslist" element={<EventsList />} />
+        </>
+      )}
+    </Routes>
   );
 }
