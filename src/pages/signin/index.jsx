@@ -3,13 +3,7 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import FormSignIn from './formSignIn';
-import {
-  getFirestore,
-  collection,
-  query,
-  where,
-  getDocs,
-} from 'firebase/firestore';
+import { getFirestore, doc, getDoc } from 'firebase/firestore';
 
 export default function SignIn() {
   const [formData, setFormData] = useState({
@@ -30,38 +24,29 @@ export default function SignIn() {
 
   const handleEmailPasswordLogin = async (e) => {
     e.preventDefault();
-    const email = formData.email;
-    const password = formData.password;
+    const { email, password } = formData;
 
     const auth = getAuth();
     try {
       const result = await signInWithEmailAndPassword(auth, email, password);
       const user = result.user;
 
-      const isAdmin = await checkIfAdmin(email);
-      const redirectRoute = isAdmin ? '/admin-dashboard' : '/homepage';
-      navigate(redirectRoute);
+      const userRef = doc(db, 'users', user.uid);
+      const userDoc = await getDoc(userRef);
 
-      localStorage.setItem('user', JSON.stringify(user));
-    } catch (error) {
-      console.error('Error signing in:', error);
-      alert('Terjadi kesalahan');
-    }
-  };
-
-  const checkIfAdmin = async (email) => {
-    try {
-      const q = query(collection(db, 'users'), where('email', '==', email));
-      const querySnapshot = await getDocs(q);
-      if (!querySnapshot.empty) {
-        const userData = querySnapshot.docs[0].data();
-        return userData.is_admin || false;
+      if (userDoc.exists()) {
+        const userData = userDoc.data();
+        if (userData.is_admin) {
+          navigate('/admin-dashboard');
+        } else {
+          navigate('/homepage');
+        }
       } else {
-        return false;
+        console.log('No such document!');
       }
     } catch (error) {
-      console.error('Error checking admin email: ', error);
-      return false;
+      console.error('Error signing in:', error);
+      alert('Terjadi kesalahan saat masuk. Silakan coba lagi.');
     }
   };
 

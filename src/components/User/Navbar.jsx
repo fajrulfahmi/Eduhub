@@ -1,23 +1,32 @@
 import { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { auth } from '../../utils/firebase';
 
 export default function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Memeriksa apakah ada informasi pengguna di localStorage
-    const user = localStorage.getItem('user');
-    if (user) {
-      setIsLoggedIn(true);
-    }
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
+      }
+    });
+
+    return () => unsubscribe();
   }, []);
 
-  const handleLogout = () => {
-    // Menghapus informasi pengguna dari localStorage dan mengubah status login
-    localStorage.removeItem('user');
-    setIsLoggedIn(false);
-    navigate('/signin');
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      localStorage.clear();
+      navigate('/signin');
+    } catch (error) {
+      console.error('Error signing out:', error);
+    }
   };
 
   return (
@@ -55,11 +64,11 @@ export default function Navbar() {
                 className="flex items-center space-x-[1rem]"
               >
                 <span>My Dashboard</span>
-                <img
+                {/* <img
                   src="images/dashboard.jpg"
                   alt="Dashboard Icon"
                   className="h-[3rem] w-[3rem] rounded-full"
-                />
+                /> */}
               </NavLink>
               <button
                 onClick={handleLogout}

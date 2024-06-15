@@ -34,7 +34,7 @@ export default function HomePage() {
     <>
       <header></header>
       <main className="overflow-hidden">
-        <div className="max-w-screen-2xl mx-auto py-4 px-4 lg:px-12">
+        <div className="lg:mx-[4rem] sm:max-sm mx-[1rem] py-[1rem]">
           <Navbar />
           <section id="hero">
             <div className="title-container mt-10">

@@ -1,7 +1,21 @@
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
+import { auth } from '../../../utils/firebase';
 
 export const SidebarNavItem = () => {
-  const handleSignOut = () => {};
+  const navigate = useNavigate();
+
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+      navigate('/signin'); // Redirect to sign-in page after successful sign-out
+      localStorage.clear();
+      console.log('logout completed');
+    } catch (error) {
+      console.error('Error signing out:', error); // Log any errors during sign-out
+    }
+  };
 
   return (
     <ul className="space-y-2">

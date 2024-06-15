@@ -1,8 +1,8 @@
-import ButtonDetailEvent from './ButtonDetailEvent';
+// import ButtonDetailEvent from './ButtonDetailEvent';
 import { IoMdCalendar } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 
-export default function Title({ title, start, end }) {
+export default function Title({ title, start, end, ButtonClick }) {
   return (
     <>
       <Link
@@ -23,7 +23,12 @@ export default function Title({ title, start, end }) {
           </p>
         </div>
         <div className="lg:pt-12 sm:max-sm pt-5 ">
-          <ButtonDetailEvent>Join Now</ButtonDetailEvent>
+          <button
+            onClick={ButtonClick}
+            className="py-[0.8rem] px-4 text-[1rem] text-[#CDFE05] bg-[#000000] rounded-lg font-semibold sm:max-sm w-[8rem]"
+          >
+            Join Now
+          </button>
         </div>
       </div>
       <div className="absolute hidden lg:block lg:text-[12rem] font-black text-black/5 top-[7rem] left-1/2 tracking-wide text-nowrap select-none transform -translate-x-1/2 z-[-1]">
